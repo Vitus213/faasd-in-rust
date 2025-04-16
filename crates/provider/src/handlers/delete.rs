@@ -51,7 +51,7 @@ async fn delete(
     service
         .remove_container(function_name, namespace)
         .await
-        .map_err(map_service_error)?;
+        .map_err(|e| map_service_error(e.into()))?;
     Ok(())
 }
 
